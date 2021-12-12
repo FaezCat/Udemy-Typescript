@@ -1,41 +1,15 @@
-// const person: {
-//   name: string;
-//   age: number;
-//   hobbies: string[];
-//   role: [number, string];
-// } = {
-//   name: "Faez",
-//   age: 28,
-//   hobbies: ["Sports", "Cooking"],
-//   role: [2, "author"],
-// };
-
-// const ADMIN = 0;
-// const READ_ONLY = 1;
-// const AUTHOR = 2;
-
-enum Role { ADMIN, READ_ONLY, AUTHOR };
-// behind the scenes this enum assigns 0 to ADMIN, 1 to READ_ONLY, and 2 to AUTHOR
-
-const person = {
-  name: "Faez",
-  age: 28,
-  hobbies: ["Sports", "Cooking"],
-  role: Role.AUTHOR,
-};
-
-// person.role.push('admin');
-// person.role[1] = 10;
-
-let favoriteActivities: string[];
-favoriteActivities = ["Sports"];
-
-console.log(person.name);
-
-for (const hobby of person.hobbies) {
-  console.log(hobby.toUpperCase());
+function combine(input1: number | string, input2: number | string) {
+  let result;
+  if (typeof input1 === "number" && typeof input2 === "number") {
+    result = input1 + input2;
+  } else { 
+    result = input1.toString() + input2.toString();
+  }
+  return result;
 }
 
-if (person.role === Role.AUTHOR) {
-  console.log("is author");
-}
+const combinedAges = combine(30, 26);
+console.log(combinedAges);
+
+const combinedNames = combine("Max", "Anna");
+console.log(combinedNames);
