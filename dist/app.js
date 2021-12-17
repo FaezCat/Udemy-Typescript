@@ -1,8 +1,10 @@
 "use strict";
 class Department {
-    constructor(n) {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+        // private functions similarly to other OOP languages - can also be added to methods as well
         this.employees = [];
-        this.name = n;
     }
     describe() {
         console.log("Department: " + this.name);
@@ -15,7 +17,8 @@ class Department {
         console.log(this.employees);
     }
 }
-const accounting = new Department("Accounting");
+const accounting = new Department("d1", "Accounting");
 accounting.addEmployee("Max");
 accounting.addEmployee("Manu");
-accounting.describe;
+accounting.describe();
+accounting.printEmployeeInformation();

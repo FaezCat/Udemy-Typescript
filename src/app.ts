@@ -1,9 +1,7 @@
 class Department {
-  name: string;
-  employees: string[] = [];
-  
-  constructor(n: string) {
-    this.name = n;
+  // private functions similarly to other OOP languages - can also be added to methods as well
+  private employees: string[] = [];
+  constructor(private id: string, public name: string) {
   }
 
   describe(this: Department) {
@@ -20,9 +18,10 @@ class Department {
   }
 }
 
-const accounting = new Department("Accounting");
+const accounting = new Department("d1", "Accounting");
 
 accounting.addEmployee("Max");
 accounting.addEmployee("Manu");
 
-accounting.describe;
+accounting.describe();
+accounting.printEmployeeInformation();
