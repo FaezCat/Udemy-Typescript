@@ -7,7 +7,7 @@ class Department {
         this.employees = [];
     }
     describe() {
-        console.log("Department: " + this.name);
+        console.log(`Department: (${this.id}): ${this.name}`);
     }
     addEmployee(employee) {
         this.employees.push(employee);
