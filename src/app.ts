@@ -18,10 +18,21 @@ class Department {
   }
 }
 
-const accounting = new Department("d1", "Accounting");
+class ITDepartment extends Department {
+  admins: string[];
+  constructor(id: string, admins: string[]) {
+    super(id, "IT");
+    this.admins = admins;
+  }
+}
 
-accounting.addEmployee("Max");
-accounting.addEmployee("Manu");
+const it = new ITDepartment("d1", ["Max"]);
 
-accounting.describe();
-accounting.printEmployeeInformation();
+it.addEmployee("Max");
+it.addEmployee("Manu");
+
+it.describe();
+it.name = "NEW NAME";
+it.printEmployeeInformation();
+
+console.log(it);
