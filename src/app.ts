@@ -26,6 +26,20 @@ class ITDepartment extends Department {
   }
 }
 
+class AccountingDepartment extends Department {
+  constructor(id: string, private reports: string[]) {
+    super(id, "IT");
+  }
+
+  addReport(text: string) {
+    this.reports.push(text);
+  }
+
+  printReports() {
+    console.log(this.reports);
+  }
+}
+
 const it = new ITDepartment("d1", ["Max"]);
 
 it.addEmployee("Max");
@@ -36,3 +50,9 @@ it.name = "NEW NAME";
 it.printEmployeeInformation();
 
 console.log(it);
+
+const accounting = new AccountingDepartment("d2", []);
+
+accounting.addReport("Something went wrong...");
+
+accounting.printReports();
