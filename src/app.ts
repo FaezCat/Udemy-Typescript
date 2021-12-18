@@ -1,7 +1,15 @@
 class Department {
+
+  static fiscalYear = 2020;
   // private functions similarly to other OOP languages - can also be added to methods as well
   protected employees: string[] = [];
   constructor(private readonly id: string, public name: string) {
+  }
+
+  static createEmployee(name: string) {
+    return {
+      name: name
+    };
   }
 
   describe(this: Department) {
@@ -64,6 +72,9 @@ class AccountingDepartment extends Department {
     console.log(this.reports);
   }
 }
+
+const employee1 = Department.createEmployee("Max");
+console.log(employee1, Department.fiscalYear);
 
 const it = new ITDepartment("d1", ["Max"]);
 

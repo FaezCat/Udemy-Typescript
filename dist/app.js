@@ -6,6 +6,11 @@ class Department {
         // private functions similarly to other OOP languages - can also be added to methods as well
         this.employees = [];
     }
+    static createEmployee(name) {
+        return {
+            name: name
+        };
+    }
     describe() {
         console.log(`Department: (${this.id}): ${this.name}`);
     }
@@ -17,6 +22,7 @@ class Department {
         console.log(this.employees);
     }
 }
+Department.fiscalYear = 2020;
 class ITDepartment extends Department {
     constructor(id, admins) {
         super(id, "IT");
@@ -55,6 +61,8 @@ class AccountingDepartment extends Department {
         console.log(this.reports);
     }
 }
+const employee1 = Department.createEmployee("Max");
+console.log(employee1, Department.fiscalYear);
 const it = new ITDepartment("d1", ["Max"]);
 it.addEmployee("Max");
 it.addEmployee("Manu");
@@ -63,7 +71,7 @@ it.name = "NEW NAME";
 it.printEmployeeInformation();
 console.log(it);
 const accounting = new AccountingDepartment("d2", []);
-accounting.mostRecentReport = "";
+accounting.mostRecentReport = "Year End Report";
 accounting.addReport("Something went wrong...");
 console.log(accounting.mostRecentReport);
 accounting.addReport("Something went wrong...");
