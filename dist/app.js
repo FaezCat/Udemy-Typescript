@@ -1,2 +1,10 @@
 "use strict";
-console.log("New section!");
+let user1;
+user1 = {
+    name: "Faez",
+    age: 30,
+    greet(phrase) {
+        console.log(phrase + " " + this.name);
+    }
+};
+user1.greet("Hi there - I am");
