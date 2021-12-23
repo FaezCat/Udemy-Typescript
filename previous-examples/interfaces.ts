@@ -3,9 +3,9 @@ interface AddFn {
   (a: number, b: number): number;
 }
 
-let add: AddFn;
+let addNums: AddFn;
 
-add = (n1: number, n2: number) => {
+addNums = (n1: number, n2: number) => {
   return n1 + n2;
 };
 
