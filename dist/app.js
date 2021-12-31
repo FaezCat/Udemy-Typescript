@@ -1,63 +1,22 @@
 "use strict";
-// const names: Array<string> = []; // string[]
-// // names[0].split(" ");
-// // returns a promise of the generic type string - typecasted using the <> operators
-// const promise: Promise<number> = new Promise((resolve, reject) => {
-//   setTimeout(() => {
-//     resolve(10);
-//   }, 2000);
-// });
-// promise.then(data => {
-//   // data.split(" ");
-// });
-function merge(objA, objB) {
-    return Object.assign(objA, objB);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+function Logger(constructor) {
+    console.log("Logging...");
+    console.log(constructor);
 }
-const mergedObj = merge({ name: "Max", hobbies: ["Sports"] }, { age: 30 });
-console.log(mergedObj);
-function countAndDescribe(element) {
-    let descriptionText = "Got no value.";
-    if (element.length === 1) {
-        descriptionText = "Got 1 element.";
-    }
-    else if (element.length > 1) {
-        descriptionText = "Got " + element.length + " elements.";
-    }
-    return [element, descriptionText];
-}
-console.log(countAndDescribe(["Sports", "Cooking"]));
-function extractAndConvert(obj, key) {
-    return "Value: " + obj[key];
-}
-console.log(extractAndConvert({ name: "Max" }, "name"));
-class DataStorage {
+let Person = class Person {
     constructor() {
-        this.data = [];
+        this.name = "Max";
+        console.log("Creating person object...");
     }
-    addItem(item) {
-        this.data.push(item);
-    }
-    removeItem(item) {
-        if (this.data.indexOf(item) === -1) {
-            return;
-        }
-        this.data.splice(this.data.indexOf(item), 1);
-    }
-    getItems() {
-        return [...this.data];
-    }
-}
-const textStorage = new DataStorage();
-textStorage.addItem("Max");
-textStorage.addItem("Manu");
-textStorage.removeItem("Max");
-console.log(textStorage.getItems());
-const numberStorage = new DataStorage();
-function createCourseGoal(title, description, date) {
-    let courseGoal = {};
-    courseGoal.title = title;
-    courseGoal.description = description;
-    courseGoal.completeUntil = date;
-    return courseGoal;
-}
-const names = ["Max", "Anna"];
+};
+Person = __decorate([
+    Logger
+], Person);
+const pers = new Person();
+console.log(pers);
