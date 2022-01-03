@@ -11,7 +11,7 @@ function WithTemplate(template: string, hookId: string) {
   return function<T extends {new(...args: any[]): {name: string}}>(originalConstructor: T) {
     // creating a new class here which has the original class's properties and constructor (called via super())
     return class extends originalConstructor {
-      constructor(...args: any[]) {
+      constructor(..._: any[]) {
         super();
         console.log("Rendering template...");
         const hookEl = document.getElementById(hookId);
@@ -92,3 +92,19 @@ class Product {
     return this._price * (1 + tax);
   }
 }
+
+const p1 = new Product('Book', 19);
+const p2 = new Product('Book 2', 29);
+
+class Printer {
+  message = 'This works!';
+
+  showMessage() {
+    console.log(this.message);
+  }
+}
+
+const p = new Printer();
+
+const button = document.querySelector('button')!;
+button.addEventListener('click', p.showMessage.bind(p));
