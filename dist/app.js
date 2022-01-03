@@ -55,6 +55,12 @@ function Log3(target, name, descriptor) {
     console.log(name);
     console.log(descriptor);
 }
+function Log4(target, name, position) {
+    console.log("Parameter decorator!");
+    console.log(target);
+    console.log(name);
+    console.log(position);
+}
 class Product {
     constructor(t, p) {
         this.title = t;
