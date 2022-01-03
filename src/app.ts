@@ -8,13 +8,19 @@ function Logger(logString: string) {
 
 function WithTemplate(template: string, hookId: string) {
   console.log("TEMPLATE FACTORY");
-  return function(constructor: any) {
-    console.log("Rendering template...");
-    const hookEl = document.getElementById(hookId);
-    const p = new constructor();
-    if (hookEl) {
-      hookEl.innerHTML = template;
-      hookEl.querySelector("h1")!.textContent = p.name;
+  return function<T extends {new(...args: any[]): {name: string}}>(originalConstructor: T) {
+    // creating a new class here which has the original class's properties and constructor (called via super())
+    return class extends originalConstructor {
+      constructor(...args: any[]) {
+        super();
+        console.log("Rendering template...");
+        const hookEl = document.getElementById(hookId);
+        const p = new originalConstructor();
+        if (hookEl) {
+          hookEl.innerHTML = template;
+          hookEl.querySelector("h1")!.textContent = this.name;
+        }
+      }
     }
   }
 }

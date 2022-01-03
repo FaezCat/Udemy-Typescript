@@ -14,14 +14,20 @@ function Logger(logString) {
 }
 function WithTemplate(template, hookId) {
     console.log("TEMPLATE FACTORY");
-    return function (constructor) {
-        console.log("Rendering template...");
-        const hookEl = document.getElementById(hookId);
-        const p = new constructor();
-        if (hookEl) {
-            hookEl.innerHTML = template;
-            hookEl.querySelector("h1").textContent = p.name;
-        }
+    return function (originalConstructor) {
+        // creating a new class here which has the original class's properties and constructor (called via super())
+        return class extends originalConstructor {
+            constructor(...args) {
+                super();
+                console.log("Rendering template...");
+                const hookEl = document.getElementById(hookId);
+                const p = new originalConstructor();
+                if (hookEl) {
+                    hookEl.innerHTML = template;
+                    hookEl.querySelector("h1").textContent = this.name;
+                }
+            }
+        };
     };
 }
 // executes second
